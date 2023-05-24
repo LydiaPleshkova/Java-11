@@ -66,4 +66,18 @@ public class MoviesManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+    @Test
+    public void shouldFindLastIfLimitIsBelowFive() {
+        MoviesManager manager = new MoviesManager(4);
+
+        manager.addMovie("Movie-1");
+        manager.addMovie("Movie-2");
+        manager.addMovie("Movie-3");
+        manager.addMovie("Movie-4");
+
+        String[] expected = {"Movie-4", "Movie-3", "Movie-2", "Movie-1"};
+        String[] actual = manager.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
 }
